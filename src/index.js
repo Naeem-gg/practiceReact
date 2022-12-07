@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
-
+import "./index.css"
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 
 root.render(
   <React.StrictMode>
-    <h1>Hello</h1>
+    <App/>
   </React.StrictMode>
 );
 
