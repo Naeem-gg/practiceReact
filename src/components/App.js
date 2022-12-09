@@ -1,14 +1,15 @@
+import Login from "./Login";
+import Heading from "./Heading";
+const isLogged = true;
 const App = () => {
     return (
       <div className="container">
-        <h1>Hello</h1>
-        <form className="form">
-          <input type="text" placeholder="Username" />
-          <input type="password" placeholder="Password" />
-          <button type="submit">Login</button>
-        </form>
+    {isLogged &&
+        <Login/>}
+        {!isLogged&&<Heading/>}
       </div>
     );
-  }
-  export default App;
+}
+export default App;
+//<Heading/>
   
