@@ -1,27 +1,14 @@
-import Heading from "./Heading";
-import Entry from "./Entry";
-import emoji from "./emojipedia";
-
-
-
 const App = () => {
-
-  return (
-    <>
-      <Heading />
-
-
-      <dl className="dictionary">
-        {emoji.map(entry => <Entry
-            key={entry.id}
-            name={entry.name}
-            emoji={entry.emoji}
-            meaning={entry.meaning}
-          />
-        )}
-      </dl>
-    </>
-  );
-}
-
-export default App;
+    return (
+      <div className="container">
+        <h1>Hello</h1>
+        <form className="form">
+          <input type="text" placeholder="Username" />
+          <input type="password" placeholder="Password" />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    );
+  }
+  export default App;
+  
