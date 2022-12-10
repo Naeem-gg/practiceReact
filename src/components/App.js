@@ -1,15 +1,15 @@
-import Login from "./Login";
-import Heading from "./Heading";
-const isLogged = true;
-const App = () => {
-    return (
-      <div className="container">
-    {isLogged &&
-        <Login/>}
-        {!isLogged&&<Heading/>}
-      </div>
-    );
+import Form from "./Form";
+
+var userIsRegistered = false;
+
+const App=()=> {
+  return (
+    <div className="container">
+    {userIsRegistered?<Form text="Login" bool={true}/>:
+      <Form text="Register" bool={false}/>}
+
+    </div>
+  );
 }
+
 export default App;
-//<Heading/>
-  
