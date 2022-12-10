@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h1
+        {
+            color:grey;
+            font-family: 'Times New Roman', Times, serif;
+            border: 1px solid grey;
+            text-align: center;
+            font-size: 3rem;
+            width: 50%;
+            margin: 0px auto;
+            border-radius:15px ;
+        }
+        h1:hover{
+            background-color: antiquewhite;
+        }
+    </style>
+    <title>Tip calculator</title>
+</head>
+<body>
+            <h1>Tip calculator</h1>
+            <br><br>
+            
+                <input type="text" placeholder="Enter bill amount" id="bill">
+                <input type="text" placeholder="Tip %" id="tip">
+                <button onclick="cal();">calculate</button>
+                <p class="res"></p>
+            
+            <script type="text/javascript">
+                const cal = () =>{
+                    let res = document.querySelector(".res");
+                    let bill = parseInt(document.querySelector("#bill").value);
+                    console.log(typeof bill);
+                    let tip = parseInt(document.querySelector("#tip").value);
+                    console.log(typeof tip);
+                    let finalBill = bill+(bill * (tip/100));
+                    res.innerHTML = finalBill
+
+                }
+            </script>
+</body>
+</html>
