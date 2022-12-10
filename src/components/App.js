@@ -1,16 +1,10 @@
-import { useState } from "react";
-const App = ()=>{
-  const [count,setState] = useState(0)
-  const increase = ()=>{
-    setState(count+1);
-  }
-  return(
+const App = () => {
+  return (
     <div className="container">
-      <h1>{count}</h1>
-      <button onClick={()=>setState(count-1)}>-</button>
-      <button onClick={increase}>+</button>
+      <h1>TIME</h1>
+      <button>Get Time</button>
     </div>
   );
-}
+};
 
 export default App;
