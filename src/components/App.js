@@ -1,18 +1,21 @@
-import { useState } from "react";
-const App = () => {
-  const currentTime = ()=>{
-    let time = new Date().toLocaleTimeString();
-    setTime(time);
+import { useState } from "react"
+
+export default function App() {
+  const [styleobj,setStyle] = useState({});
+  const [name,setName] = useState("Hello");
+  const [btnName,setBtnName] = useState("");
+  const mouseOver = ()=>{
+    setStyle({backgroundColor:"black"})
   }
-  setInterval(currentTime, 1000);
-  let time = new Date().toLocaleTimeString();
-  const [count,setTime] = useState(time);
+  const mouseOut = ()=>{
+    setStyle({backgroundColor:"white"})
+
+  }
   return (
     <div className="container">
-      <h1>{time}</h1>
-      <button onClick={currentTime}>Get Time</button>
-    </div>
-  );
-};
-
-export default App;
+    <h1>{btnName || "Hello"}</h1>
+    <input type="text" placeholder="What's your name?" onChange={e=>setName(e.target.value)} />
+    <button onMouseOver={mouseOver} onMouseOut={mouseOut} style={styleobj} onClick={()=>{setBtnName(name)}}>Submit</button>
+  </div>
+  )
+}
