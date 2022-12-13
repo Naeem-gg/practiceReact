@@ -7,18 +7,12 @@ export default function App (){
     email: ""
   });
   const handleChange = (event) =>{
-    const updateState = {};
-    const {name,value} = event.target; 
-    if(name==="fName")
-    updateState.fName = value;
-    else if(name === "lName")
-    updateState.lName = value;
-    else if(name==="email")
-    updateState.email = value;
-    setContact((pre)=>({
-      ...pre,
-      ...updateState
-    }))
+    const {name,value} = event.target;
+    setContact((pre)=>(
+      {...pre,
+        [name]:value
+      }
+    ))
   }
 
   return (
