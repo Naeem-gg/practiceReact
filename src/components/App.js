@@ -1,46 +1,24 @@
 import React, { useState } from "react";
 
-function App() {
-  const [state, setState] = useState({
-    fName:"",
-    lName:""
+export default function App (){
+  const [contact, setContact] = useState({
+    fName: "",
+    lName: "",
+    email: ""
   });
-
-  function handleChange(event){
-    const {name,value} = event.target;
-    let updateValue = {};
-    if(name==="fName")
-    updateValue = {fName:value};
-    else if(name==="lName")
-    updateValue = {lName:value};
-
-    setState((pre)=>({
-      ...pre,
-      ...updateValue
-    }))
-  }
 
   return (
     <div className="container">
       <h1>
-        Hello {state.fName} {state.lName}
+        Hello {contact.fName} {contact.lName}
       </h1>
-      <form onSubmit={e=>e.preventDefault()}>
-        <input
-          name="fName"
-          onChange={handleChange}
-          placeholder="First Name"
-          value={state.fName}
-        />
-        <input
-          name="lName"
-          onChange={handleChange}
-          placeholder="Last Name"
-          value={state.lName}
-        />
+      <p>{contact.email}</p>
+      <form>
+        <input name="fName" placeholder="First Name" />
+        <input name="lName" placeholder="Last Name" />
+        <input name="email" placeholder="Email" />
         <button>Submit</button>
       </form>
     </div>
   );
 }
-export default App;
