@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import List from "./List";
 
 export default function App() {
   const [todo,addTodo] = useState("A Item");
@@ -27,9 +28,9 @@ export default function App() {
       </div>
       <div>
         <ul>
-          {
-            arr.map(item=><li>{item}</li>)
-          }
+        {arr.map(item=>
+          <List item={item}/>
+        )}
         </ul>
       </div>
     </div>
