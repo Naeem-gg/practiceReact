@@ -12,8 +12,19 @@ export default function App() {
     addTodo(value);
   }
   const addToArray = () => {
-    addArr(pre=>[...pre,todo])
+    addArr(pre=>{
+      if(todo!=="")
+      return([...pre,todo])
+      else return([...pre])
+    })
     addTodo("")
+  }
+  const deleteItem = (id) =>{
+    addArr((pre)=>{
+      return pre.filter((single,index)=>{
+        return (index !==id)
+      })
+    })
   }
   return (
     <div className="container">
@@ -28,8 +39,8 @@ export default function App() {
       </div>
       <div>
         <ul>
-        {arr.map(item=>
-          <List item={item}/>
+        {arr.map((item,index)=>
+          <List key={index} id={index} item={item} delItem={deleteItem}/>
         )}
         </ul>
       </div>
