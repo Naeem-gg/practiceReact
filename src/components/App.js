@@ -1,55 +1,66 @@
 import React, { useState } from "react";
-import List from "./List";
+import ToDoItem from "./ToDoItem";
+import InputArea from "./InputArea";
 
-export default function App() {
-  const [todo,addTodo] = useState("A Item");
-  const [arr,addArr] = useState([]);
+function App() {
+  const [inputText, setInputText] = useState("");
+  const [items, setItems] = useState([]);
 
+  function handleChange(event) {
+    const newValue = event.target.value;
+    setInputText(newValue);
+  }
 
-  
-  const handleChange = (event) =>{
-    const value = event.target.value;
-    addTodo(value);
+  function addItem() {
+    setItems(prevItems => {
+      return [...prevItems, inputText];
+    });
+    setInputText("");
   }
-  const addToArray = () => {
-    addArr(pre=>{
-      if(todo!=="")
-      return([...pre,todo])
-      else return([...pre])
-    })
-    addTodo("")
+
+  function deleteItem(id) {
+    setItems(prevItems => {
+      return prevItems.filter((item, index) => {
+        return index !== id;
+      });
+    });
   }
-  const deleteItem = (id) =>{
-    addArr((pre)=>{
-      return pre.filter((single,index)=>{
-        return (index !==id)
-      })
-    })
-  }
+
   return (
     <div className="container">
       <div className="heading">
         <h1>To-Do List</h1>
       </div>
-      <div className="form">
-        <input type="text" onChange={handleChange} value={todo}/>
-        <button onClick={addToArray}>
-          <span>Add</span>
-        </button>
-      </div>
+      <InputArea handleChange={handleChange} addItem={addItem} inputText={inputText}/>
       <div>
         <ul>
-        {arr.map((item,index)=>
-          <List key={index} id={index} item={item} delItem={deleteItem}/>
-        )}
+          {items.map((todoItem, index) => (
+            <ToDoItem
+              key={index}
+              id={index}
+              text={todoItem}
+              onChecked={deleteItem}
+            />
+          ))}
         </ul>
       </div>
     </div>
   );
 }
 
-//CHALLENGE: Make this app work by applying what you've learnt.
-//1. When new text is written into the input, its state should be saved.
-//2. When the add button is pressed, the current data in the input should be
-//added to an array.
-//3. The <ul> should display all the array items as <li>s
+export default App;
+
+
+//CHALLENGE: I have extracted the Input Area, including the <input> and
+//<button> elements into a seperate Component called InputArea.
+//Your job is to make the app work as it did before but this time with the
+//InputArea as a seperate Component.
+
+// DO NOT: Modify the ToDoItem.jsx
+// DO NOT: Move the input/button elements back into the App.jsx
+
+//Hint 1: You will need to think about how to manage the state of the input element
+//in InputArea.jsx.
+//Hint 2: You will need to think about how to pass the input value back into
+//the addItem() function in App.jsx.
+
